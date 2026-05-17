@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results &amp; Recommendations — Usability Evaluation Report</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ══════════════════ NAVBAR ══════════════════ -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <span class="brand-dot"></span>
+        PartidoGO
+      </a>
+      <div class="nav-links">
+        <a href="index.html"                 class="nav-link">Home</a>
+        <a href="data-gathering.html"        class="nav-link">Data Gathering</a>
+        <a href="results.html"               class="nav-link active">Results &amp; Recommendations</a>
+        <a href="video-demo.html"            class="nav-link">Video Demo</a>
+        <a href="prototype-walkthrough.html" class="nav-link">Prototype Walkthrough</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════ PAGE HERO ══════════════════ -->
+  <section class="page-hero">
+    <div class="page-hero-aurora"></div>
+    <div class="page-hero-mountains">
+      <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ph-far" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2D1A7A" stop-opacity=".5"/>
+            <stop offset="100%" stop-color="#1A0A60" stop-opacity=".75"/>
+          </linearGradient>
+          <linearGradient id="ph-mid" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1E0D6A"/>
+            <stop offset="100%" stop-color="#120550"/>
+          </linearGradient>
+          <linearGradient id="ph-near" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#130747"/>
+            <stop offset="100%" stop-color="#0D034D"/>
+          </linearGradient>
+          <filter id="ph-glow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- Far peaks (shifted horizontally for variety) -->
+        <g class="mtn-layer-2">
+          <path d="M-40,200 L-40,118 C55,108 105,78 165,58 C210,43 238,37 272,55 C315,76 342,98 395,82 C445,66 480,28 542,12 C584,-1 612,-5 650,18 C688,40 718,70 770,56 C816,43 850,12 910,-4 C954,-15 982,-17 1018,10 C1056,35 1090,70 1142,57 C1182,46 1215,20 1268,30 C1322,42 1358,70 1414,57 L1500,44 L1500,200 Z" fill="url(#ph-far)"/>
+          <path d="M542,12 C557,-1 570,-8 584,-12 C596,-16 607,-14 618,-4 C628,6 632,17 650,18 C627,12 600,6 574,16 Z" fill="rgba(210,200,255,.16)" filter="url(#ph-glow)"/>
+          <path d="M910,-4 C924,-17 938,-23 954,-27 C966,-30 977,-27 988,-19 C997,-12 1002,-3 1018,10 C995,4 970,-2 944,10 Z" fill="rgba(210,200,255,.13)" filter="url(#ph-glow)"/>
+        </g>
+        <!-- Mid peaks -->
+        <g class="mtn-layer-1">
+          <path d="M-60,200 L-60,140 C35,132 80,112 130,92 C168,76 195,64 235,80 C280,98 314,126 364,110 C410,95 442,60 496,43 C538,30 566,25 602,43 C640,62 672,98 726,84 C770,72 802,42 860,26 C904,14 932,9 970,26 C1010,44 1042,80 1098,68 C1136,58 1168,32 1222,42 C1275,52 1310,80 1368,66 L1500,44 L1500,200 Z" fill="url(#ph-mid)"/>
+        </g>
+        <!-- Near ridge -->
+        <g class="mtn-layer-3">
+          <path d="M-80,200 L-80,162 C15,154 60,140 110,120 C148,104 174,92 214,108 C260,126 295,153 348,140 C394,128 426,94 480,78 C522,64 551,59 588,76 C626,94 658,128 714,116 C758,105 790,74 850,58 C895,45 923,40 963,56 C1005,74 1040,108 1096,96 C1136,86 1168,60 1222,68 C1276,76 1310,104 1372,90 L1500,70 L1500,200 Z" fill="url(#ph-near)"/>
+        </g>
+        <!-- Foreground silhouette -->
+        <path d="M-40,200 L-40,180 C48,174 94,162 142,148 C178,137 204,126 244,140 C290,156 322,180 376,168 C421,157 453,132 508,120 C551,110 579,106 618,120 C656,135 688,164 744,152 C788,142 820,116 880,104 C924,95 952,92 994,107 C1036,122 1070,154 1128,142 C1168,132 1200,108 1256,114 C1310,120 1344,144 1408,130 L1500,116 L1500,200 Z" fill="#0D034D"/>
+        <!-- Fog seam -->
+        <path d="M-40,180 C48,174 94,162 142,148 C178,137 204,126 244,140 C290,156 322,180 376,168 C421,157 453,132 508,120 C551,110 579,106 618,120 C656,135 688,164 744,152 C788,142 820,116 880,104 C924,95 952,92 994,107 C1036,122 1070,154 1128,142 C1168,132 1200,108 1256,114 C1310,120 1344,144 1408,130 L1500,116 L1500,130 C1344,158 1310,136 1256,130 C1200,124 1168,148 1128,158 C1070,170 1036,138 994,123 C952,108 924,111 880,120 C820,132 788,158 744,168 C688,180 656,151 618,136 C579,122 551,126 508,136 C453,148 421,173 376,184 C322,196 290,172 244,156 C204,142 178,153 142,164 C94,178 48,190 -40,196 Z" fill="rgba(167,139,250,.06)"/>
+      </svg>
+    </div>
+    <div class="container">
+      <div class="page-hero-content">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep">›</span>
+          <span>Results &amp; Recommendations</span>
+        </div>
+        <h1>Results, Discussion &amp; Recommendations</h1>
+        <p>Summary of usability testing outcomes, identified issues, and proposed design improvements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ SECTION NAV ══════════════════ -->
+  <div style="background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 64px; z-index: 90;">
+    <div class="container">
+      <div style="display:flex; gap:0; overflow-x:auto;">
+        <a href="#summary"         style="padding:14px 18px; font-size:.85rem; font-weight:600; color:var(--text-muted); white-space:nowrap; border-bottom:2px solid transparent; transition:var(--transition);" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--text-muted)'">Summary</a>
+        <a href="#issues"          style="padding:14px 18px; font-size:.85rem; font-weight:600; color:var(--text-muted); white-space:nowrap; border-bottom:2px solid transparent; transition:var(--transition);" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--text-muted)'">Key Issues</a>
+        <a href="#discussion"      style="padding:14px 18px; font-size:.85rem; font-weight:600; color:var(--text-muted); white-space:nowrap; border-bottom:2px solid transparent; transition:var(--transition);" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--text-muted)'">Discussion</a>
+        <a href="#recommendations" style="padding:14px 18px; font-size:.85rem; font-weight:600; color:var(--text-muted); white-space:nowrap; border-bottom:2px solid transparent; transition:var(--transition);" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--text-muted)'">Recommendations</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ 1. SUMMARY ══════════════════ -->
+  <section class="section" id="summary">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">01 — Summary</span>
+        <h2>Usability Testing Results</h2>
+        <p>Key metrics and outcomes from the usability testing sessions.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="grid-4 fade-up" style="margin-bottom: 48px;">
+        <div class="card stat-card">
+          <!-- ✏️ EDIT: Your average SUS score or overall satisfaction rating -->
+          <div class="stat-number"><span data-count="62">62</span></div>
+          <div class="stat-label">Avg. SUS Score</div>
+        </div>
+        <div class="card stat-card">
+          <!-- ✏️ EDIT: Task completion rate (%) -->
+          <div class="stat-number"><span data-count="80">80</span><span class="stat-unit">%</span></div>
+          <div class="stat-label">Task Completion Rate</div>
+        </div>
+        <div class="card stat-card">
+          <!-- ✏️ EDIT: Total usability issues found -->
+          <div class="stat-number"><span data-count="14">14</span></div>
+          <div class="stat-label">Usability Issues Found</div>
+        </div>
+        <div class="card stat-card">
+          <!-- ✏️ EDIT: Number of critical issues -->
+          <div class="stat-number"><span data-count="20">20</span></div>
+          <div class="stat-label">Total Respondents</div>
+        </div>
+      </div>
+
+            <!-- SUS Scores per Respondent -->
+      <div class="fade-up">
+        <div class="card" style="padding:28px;">
+          <h3 style="margin-bottom:6px;">📊 SUS Scores per Respondent</h3>
+          <p style="font-size:.83rem; color:var(--text-muted); margin-bottom:24px;">
+            Individual System Usability Scale scores computed from the 22 respondents' Google Form responses.
+            SUS scores range from 0–100. A score above 68 is considered above average.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Respondent</th>
+                  <th>Course</th>
+                  <th>Gender</th>
+                  <th>Age</th>
+                  <th>Tech Frequency</th>
+                  <th>SUS Score</th>
+                  <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><span class="resp-tag">P-01</span></td><td>BET-EET</td><td>Male</td><td>19</td><td>Weekly</td><td><strong>70.0</strong></td><td><span class="badge badge-blue">Above Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-02</span></td><td>BET-EET</td><td>Male</td><td>19</td><td>Weekly</td><td><strong>47.5</strong></td><td><span class="badge badge-gold">Below Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-03</span></td><td>BET-EET</td><td>Male</td><td>19</td><td>Daily</td><td><strong>50.0</strong></td><td><span class="badge badge-gold">Below Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-04</span></td><td>BET-EET</td><td>Male</td><td>24</td><td>Daily</td><td><strong>70.0</strong></td><td><span class="badge badge-blue">Above Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-05</span></td><td>BET-EET</td><td>Male</td><td>23</td><td>Daily</td><td><strong>52.5</strong></td><td><span class="badge badge-gold">Below Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-06</span></td><td>BET-EET</td><td>Male</td><td>20</td><td>Daily</td><td><strong>50.0</strong></td><td><span class="badge badge-gold">Below Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-07</span></td><td>BET-EET</td><td>Male</td><td>21</td><td>Weekly</td><td><strong>47.5</strong></td><td><span class="badge badge-gold">Below Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-08</span></td><td>BET-EET</td><td>Male</td><td>21</td><td>Weekly</td><td><strong>50.0</strong></td><td><span class="badge badge-gold">Below Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-09</span></td><td>BET-EET</td><td>Female</td><td>20</td><td>Daily</td><td><strong>52.5</strong></td><td><span class="badge badge-gold">Below Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-10</span></td><td>BET-EET</td><td>Male</td><td>20</td><td>Daily</td><td><strong>50.0</strong></td><td><span class="badge badge-gold">Below Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-11</span></td><td>BSIT</td><td>Male</td><td>21</td><td>Weekly</td><td><strong>67.5</strong></td><td><span class="badge badge-gold">Below Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-12</span></td><td>BSIT</td><td>Female</td><td>21</td><td>Weekly</td><td><strong>62.5</strong></td><td><span class="badge badge-gold">Below Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-13</span></td><td>BSIT</td><td>Male</td><td>21</td><td>Daily</td><td><strong>82.5</strong></td><td><span class="badge badge-navy">Good</span></td></tr>
+                <tr><td><span class="resp-tag">P-14</span></td><td>BSIT</td><td>Male</td><td>21</td><td>Daily</td><td><strong>100.0</strong></td><td><span class="badge badge-navy">Best Imaginable</span></td></tr>
+                <tr><td><span class="resp-tag">P-15</span></td><td>BSIT</td><td>Female</td><td>21</td><td>Daily</td><td><strong>100.0</strong></td><td><span class="badge badge-navy">Best Imaginable</span></td></tr>
+                <tr><td><span class="resp-tag">P-16</span></td><td>BSIT</td><td>Female</td><td>21</td><td>Weekly</td><td><strong>50.0</strong></td><td><span class="badge badge-gold">Below Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-17</span></td><td>BSIT</td><td>Male</td><td>20</td><td>Daily</td><td><strong>50.0</strong></td><td><span class="badge badge-gold">Below Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-18</span></td><td>BSIT</td><td>Female</td><td>21</td><td>Daily</td><td><strong>50.0</strong></td><td><span class="badge badge-gold">Below Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-19</span></td><td>BSIT</td><td>Female</td><td>21</td><td>Daily</td><td><strong>57.5</strong></td><td><span class="badge badge-gold">Below Average</span></td></tr>
+                <tr><td><span class="resp-tag">P-20</span></td><td>BET-EET</td><td>Undisclosed</td><td>22</td><td>Daily</td><td><strong>82.5</strong></td><td><span class="badge badge-navy">Good</span></td></tr>
+                <tr style="background:var(--surface); font-weight:700;">
+                  <td colspan="5" style="text-align:right; font-weight:700;">Average SUS Score</td>
+                  <td><strong style="color:var(--indigo-deep);">62.1</strong></td>
+                  <td><span class="badge badge-gold">Below Average</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:12px; font-size:.78rem; color:var(--text-muted);">
+            * SUS scores: 0–51 = Poor, 52–67 = Below Average, 68–80.3 = Above Average, 80.4–90 = Good, 90.9–100 = Best Imaginable
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════ 2. KEY ISSUES ══════════════════ -->
+  <section class="section" id="issues" style="background: var(--surface);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">02 — Key Issues</span>
+        <h2>Identified Usability Issues</h2>
+        <p>Issues identified through both heuristic evaluation and usability testing, sorted by severity.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- Major Issues (Severity 3) -->
+      <h3 style="margin-bottom: 16px; color: #EA580C; font-size: 1rem;">🟠 Major Issues (Severity 3)</h3>
+      <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+
+        <div class="card issue-card issue-major fade-up">
+          <div class="issue-header">
+            <div class="issue-title">No Cancel or Undo Option in Schedule</div>
+            <span class="badge" style="background:#FFF7ED; color:#EA580C;">Severity 3</span>
+          </div>
+          <div class="issue-body">On the "My Schedule" screen, users have no way to go back a step or cancel an action. There is no Cancel button or Redo option, meaning any accidental action on the schedule cannot be reversed without starting over.</div>
+          <div class="issue-heuristic">🔗 Related Heuristic: H3 — User Control and Freedom</div>
+        </div>
+
+        <div class="card issue-card issue-major fade-up">
+          <div class="issue-header">
+            <div class="issue-title">No Input Validation on Sign Up Form</div>
+            <span class="badge" style="background:#FFF7ED; color:#EA580C;">Severity 3</span>
+          </div>
+          <div class="issue-body">The Sign Up form asks for "Birth of date" and "Phone Number" without any input masks or format examples. Users can submit incorrect formats with no real-time constraints or guidance shown before clicking Register.</div>
+          <div class="issue-heuristic">🔗 Related Heuristic: H5 — Error Prevention</div>
+        </div>
+
+        <div class="card issue-card issue-major fade-up">
+          <div class="issue-header">
+            <div class="issue-title">Missing Empty States and No Search Error Feedback</div>
+            <span class="badge" style="background:#FFF7ED; color:#EA580C;">Severity 3</span>
+          </div>
+          <div class="issue-body">When viewing "My Schedule" on a day with no trips, the screen appears broken rather than showing a helpful empty state message. Similarly, when a map search fails to find an attraction, the map simply remains static with no error or feedback message shown to the user.</div>
+          <div class="issue-heuristic">🔗 Related Heuristic: H9 — Help Users Recognize, Diagnose, and Recover from Errors</div>
+        </div>
+
+      </div>
+
+      <!-- Minor Issues (Severity 2) -->
+      <h3 style="margin-bottom: 16px; color: #D97706; font-size: 1rem;">🟡 Minor Issues (Severity 2)</h3>
+      <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+
+        <div class="card issue-card issue-minor fade-up">
+          <div class="issue-header">
+            <div class="issue-title">Incorrect Active Navigation State on Home Screen</div>
+            <span class="badge badge-yellow">Severity 2</span>
+          </div>
+          <div class="issue-body">On the Home screen, the bottom navigation bar highlights the "Search" icon (magnifying glass) as active, but the displayed page content shows the "Explore" dashboard — not a search interface. This misleads users about where they currently are in the app.</div>
+          <div class="issue-heuristic">🔗 Related Heuristic: H1 — Visibility of System Status</div>
+        </div>
+
+        <div class="card issue-card issue-minor fade-up">
+          <div class="issue-header">
+            <div class="issue-title">Ambiguous "Done" Button on Profile Edit Screen</div>
+            <span class="badge badge-yellow">Severity 2</span>
+          </div>
+          <div class="issue-body">On the Profile edit screen, both a "Done" button and a "Back" arrow are present at the top. It is unclear whether "Done" saves the changes or if tapping the "Back" arrow discards them, causing confusion about the outcome of each action.</div>
+          <div class="issue-heuristic">🔗 Related Heuristic: H2 — Match Between System and the Real World</div>
+        </div>
+
+        <div class="card issue-card issue-minor fade-up">
+          <div class="issue-header">
+            <div class="issue-title">Inconsistent Naming of Destination Labels</div>
+            <span class="badge badge-yellow">Severity 2</span>
+          </div>
+          <div class="issue-body">One screen uses the label "Popular Places" while the home dashboard refers to the same content as "Best Destination." This inconsistency in terminology makes the interface feel unprofessional and may confuse users about whether these are different categories.</div>
+          <div class="issue-heuristic">🔗 Related Heuristic: H4 — Consistency and Standards</div>
+        </div>
+
+        <div class="card issue-card issue-minor fade-up">
+          <div class="issue-header">
+            <div class="issue-title">Search Bar Cleared After Map Navigation</div>
+            <span class="badge badge-yellow">Severity 2</span>
+          </div>
+          <div class="issue-body">On the Map Search screen, once a user clicks into the map (MAP1 view), the search bar resets to empty. Users who navigate through multiple map layers may forget what they originally searched for, increasing memory load unnecessarily.</div>
+          <div class="issue-heuristic">🔗 Related Heuristic: H6 — Recognition Rather Than Recall</div>
+        </div>
+
+        <div class="card issue-card issue-minor fade-up">
+          <div class="issue-header">
+            <div class="issue-title">Visual Overload in Place Details and Schedule Screen</div>
+            <span class="badge badge-yellow">Severity 2</span>
+          </div>
+          <div class="issue-body">The "Luksohon Falls" detail sheet contains redundant action buttons — both "Directions" and "Start" — cluttering the primary view. On the "My Schedule" screen, large date text placed next to tiny location addresses creates a disjointed and hard-to-read layout.</div>
+          <div class="issue-heuristic">🔗 Related Heuristic: H8 — Aesthetic and Minimalist Design</div>
+        </div>
+
+        <div class="card issue-card issue-minor fade-up">
+          <div class="issue-header">
+            <div class="issue-title">No Tooltips or Onboarding Prompts for Map Features</div>
+            <span class="badge badge-yellow">Severity 2</span>
+          </div>
+          <div class="issue-body">There are no tooltips or onboarding prompts to help first-time users understand how to use the interactive map or the schedule sync feature. New users are left to discover these functions on their own, with no contextual guidance available.</div>
+          <div class="issue-heuristic">🔗 Related Heuristic: H10 — Help and Documentation</div>
+        </div>
+
+      </div>
+
+      <!-- Cosmetic Issues (Severity 1) -->
+      <h3 style="margin-bottom: 16px; color: #6B7280; font-size: 1rem;">⚪ Cosmetic Issues (Severity 1)</h3>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+
+        <div class="card issue-card issue-minor fade-up" style="border-left-color: #9CA3AF;">
+          <div class="issue-header">
+            <div class="issue-title">No Shortcut Filters for Common Tourist Needs on Map</div>
+            <span class="badge" style="background:#F3F4F6; color:#6B7280;">Severity 1</span>
+          </div>
+          <div class="issue-body">The Map view includes zoom buttons and a re-center icon, but there are no accelerators or shortcut "chips" for frequent tourist needs such as Restrooms, Food, or Parking. Expert users have no fast-access filters directly on the map interface.</div>
+          <div class="issue-heuristic">🔗 Related Heuristic: H7 — Flexibility and Efficiency of Use</div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════ 3. DISCUSSION ══════════════════ -->
+  <section class="section" id="discussion">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">03 — Discussion</span>
+        <h2>Discussion of Findings</h2>
+        <p>Analysis and interpretation of the evaluation results in the context of HCI principles.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="grid-2 fade-up" style="align-items:start;">
+
+        <!-- Written Discussion -->
+        <div style="display:flex; flex-direction:column; gap:24px;">
+          <div class="card" style="padding:28px;">
+            <h3 style="margin-bottom:14px;">Overall Usability Assessment</h3>
+            <p style="font-size:.9rem; margin-bottom:12px;">
+              PartidoGO received an average System Usability Scale (SUS) score of <strong>62.1 out of 100</strong> from 20 respondents, 
+              placing it in the <strong>Below Average</strong> range based on the standard SUS interpretation scale. 
+              While the prototype was generally understood in terms of its purpose as a tourism guide for the Partido area in Camarines Sur, 
+              the evaluation revealed recurring usability gaps that affected the overall user experience. 
+              Notably, 2 respondents from the BSIT course awarded perfect scores of 100, while several BET-EET respondents rated the app below 52.5, 
+              indicating a significant gap in perceived usability between user groups with varying technology familiarity.
+            </p>
+            <p style="font-size:.9rem; margin-bottom:12px;">
+              The heuristic evaluation conducted by all four group members identified <strong>10 distinct usability violations</strong> across the prototype, 
+              covering all of Nielsen's 10 heuristics. The most frequently violated heuristics were 
+              H1 (Visibility of System Status), H3 (User Control and Freedom), and H5 (Error Prevention), 
+              each receiving a severity rating of 3 — classified as <strong>major usability problems</strong> that require priority attention. 
+              These findings are consistent with the SUS results, where users expressed difficulty with navigation flow, 
+              unclear feedback, and the absence of error recovery mechanisms while browsing tourist spots and managing their itineraries.
+            </p>
+            <p style="font-size:.9rem;">
+              Overall, PartidoGO shows strong potential as a local tourism companion for the Partido region of Camarines Sur. 
+              The app's core concept is clear and its visual design was positively received by several respondents. 
+              However, the current prototype requires targeted improvements — particularly in navigation consistency, 
+              input validation, and user control — before it can be considered fully usable by its intended target audience of tourists and first-time visitors.
+            </p>
+          </div>
+
+          <div class="card" style="padding:28px;">
+            <h3 style="margin-bottom:14px;">Relationship to HCI Principles</h3>
+            <p style="font-size:.9rem; margin-bottom:12px;">
+              The evaluation findings directly reflect several of Jakob Nielsen's 10 Usability Heuristics, 
+              confirming that the identified issues are rooted in established HCI principles rather than isolated user preferences.
+              The most critical violation found was under <strong>H1 — Visibility of System Status</strong>, 
+              where the Home screen's bottom navigation bar highlighted the "Search" icon as active 
+              while the Explore dashboard was displayed — a direct failure to keep the user informed of the system's current state. 
+              This type of mismatch creates confusion and erodes user trust in the interface.
+            </p>
+            <p style="font-size:.9rem; margin-bottom:12px;">
+              <strong>H3 — User Control and Freedom</strong> was violated in the My Schedule screen, 
+              where users had no Cancel button or undo option when creating or editing an itinerary. 
+              According to Nielsen, users need clearly marked "emergency exits" to leave unwanted states — 
+              their absence in this screen forces users into a one-way flow with no recovery path. 
+              Similarly, <strong>H5 — Error Prevention</strong> was violated in the Sign Up screen, 
+              where the absence of input masks for date and phone number fields allowed users 
+              to submit incorrectly formatted data without any prior warning, 
+              directly contradicting the principle that the best designs prevent errors before they occur.
+            </p>
+            <p style="font-size:.9rem; margin-bottom:12px;">
+              <strong>H4 — Consistency and Standards</strong> was flagged by multiple evaluators due to the inconsistent use 
+              of "Popular Places" on one screen and "Best Destination" on another to describe the same content. 
+              This violates the expectation that users should not have to wonder whether different words mean the same thing. 
+              <strong>H6 — Recognition Rather Than Recall</strong> was also noted in the Map Search screen, 
+              where the search bar reset to empty after navigating between map layers, 
+              unnecessarily increasing the user's cognitive load by requiring them to remember and re-enter their previous query.
+            </p>
+            <p style="font-size:.9rem;">
+              Collectively, these findings indicate that the primary usability challenges in PartidoGO stem from 
+              insufficient system feedback, limited user recovery options, and inconsistent interface language — 
+              all of which are well-documented usability concerns in HCI literature. 
+              Addressing these heuristic violations through the recommended design changes would meaningfully 
+              raise the app's SUS score and make PartidoGO a significantly more intuitive tourism companion for the Partido region.
+            </p>
+          </div>
+        </div>
+
+        <!-- Testing Process Timeline -->
+        <div class="card" style="padding:28px;">
+          <h3 style="margin-bottom:24px;">Evaluation Process</h3>
+          <div class="timeline">
+            <!-- ✏️ EDIT: Add your actual evaluation timeline/steps -->
+            <div class="timeline-item">
+              <div class="timeline-date">Step 1</div>
+              <div class="timeline-title">Prototype Preparation</div>
+              <div class="timeline-desc">The PartidoGO mobile app prototype was prepared using Figma prior to the evaluation session. 
+                The prototype covers core features including browsing tourist spots around the Partido area, viewing location details and photos, 
+                and navigating between different destination categories in Camarines Sur.
+                 The prototype was reviewed by all group members before the session to ensure it was ready for presentation.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Step 2</div>
+              <div class="timeline-title">Heuristic Evaluation</div>
+              <div class="timeline-desc">Each of the four group members independently reviewed the PartidoGO prototype using Nielsen's 10 Usability Heuristics.
+                 Violations were documented with the specific screen name,
+                  a description of the issue, and a severity rating from 0 (not a problem) to 4 (usability catastrophe).</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Step 3</div>
+              <div class="timeline-title">Participant Recruitment</div>
+              <div class="timeline-desc">Twenty respondents were recruited, primarily from the EET (Electronics Engineering Technology) course, with additional participants from BSIT and BSOA programs for the usability testing session. 
+                These participants were selected as they represent potential users of the app — individuals with basic to intermediate smartphone 
+                experience who could provide relevant and reliable feedback on the PartidoGO prototype's usability. 
+                None of the participants had prior exposure to the prototype before the session.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Step 4</div>
+              <div class="timeline-title">Usability Testing Sessions</div>
+              <div class="timeline-desc">
+                The usability testing was conducted through Google Meet. The group leader presented and walked through the PartidoGO prototype live on screen, 
+                demonstrating its core features including browsing tourist spots, viewing destination details, and navigating across different categories within the Partido area. 
+                The participants observed and listened as the prototype was presented to them. 
+                After the session, a Google Form questionnaire was sent to all participants to gather their feedback and usability ratings.
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Step 5</div>
+              <div class="timeline-title">Data Analysis</div>
+              <div class="timeline-desc">The responses collected from the Google Form questionnaire were compiled and analyzed.
+                SUS scores were computed per participant 
+                and averaged to determine the overall usability rating of the PartidoGO prototype. 
+                The results were then compared with the findings from the heuristic evaluation to identify the most critical design issues requiring improvement.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Heuristic Reference Card -->
+      <div class="card-surface mt-4 fade-up" style="padding: 28px;">
+        <h3 style="margin-bottom: 20px;">Nielsen's 10 Heuristics — Reference</h3>
+        <div class="grid-2" style="gap:10px;">
+          <div style="display:flex; gap:10px; align-items:flex-start; padding:10px; background:var(--bg); border-radius:var(--radius-sm); border:1px solid var(--border);">
+            <span class="badge badge-navy">H1</span>
+            <div><div style="font-weight:600; font-size:.85rem; color:var(--navy);">Visibility of System Status</div><div style="font-size:.78rem; color:var(--text-muted);">Keep users informed about what is going on.</div></div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start; padding:10px; background:var(--bg); border-radius:var(--radius-sm); border:1px solid var(--border);">
+            <span class="badge badge-navy">H2</span>
+            <div><div style="font-weight:600; font-size:.85rem; color:var(--navy);">Match Between System and Real World</div><div style="font-size:.78rem; color:var(--text-muted);">Use familiar language and concepts.</div></div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start; padding:10px; background:var(--bg); border-radius:var(--radius-sm); border:1px solid var(--border);">
+            <span class="badge badge-navy">H3</span>
+            <div><div style="font-weight:600; font-size:.85rem; color:var(--navy);">User Control &amp; Freedom</div><div style="font-size:.78rem; color:var(--text-muted);">Support undo, redo, and easy exit.</div></div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start; padding:10px; background:var(--bg); border-radius:var(--radius-sm); border:1px solid var(--border);">
+            <span class="badge badge-navy">H4</span>
+            <div><div style="font-weight:600; font-size:.85rem; color:var(--navy);">Consistency &amp; Standards</div><div style="font-size:.78rem; color:var(--text-muted);">Follow platform conventions consistently.</div></div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start; padding:10px; background:var(--bg); border-radius:var(--radius-sm); border:1px solid var(--border);">
+            <span class="badge badge-navy">H5</span>
+            <div><div style="font-weight:600; font-size:.85rem; color:var(--navy);">Error Prevention</div><div style="font-size:.78rem; color:var(--text-muted);">Design to prevent problems from occurring.</div></div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start; padding:10px; background:var(--bg); border-radius:var(--radius-sm); border:1px solid var(--border);">
+            <span class="badge badge-navy">H6</span>
+            <div><div style="font-weight:600; font-size:.85rem; color:var(--navy);">Recognition Over Recall</div><div style="font-size:.78rem; color:var(--text-muted);">Make objects, actions, and options visible.</div></div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start; padding:10px; background:var(--bg); border-radius:var(--radius-sm); border:1px solid var(--border);">
+            <span class="badge badge-navy">H7</span>
+            <div><div style="font-weight:600; font-size:.85rem; color:var(--navy);">Flexibility &amp; Efficiency of Use</div><div style="font-size:.78rem; color:var(--text-muted);">Allow users to tailor frequent actions.</div></div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start; padding:10px; background:var(--bg); border-radius:var(--radius-sm); border:1px solid var(--border);">
+            <span class="badge badge-navy">H8</span>
+            <div><div style="font-weight:600; font-size:.85rem; color:var(--navy);">Aesthetic &amp; Minimal Design</div><div style="font-size:.78rem; color:var(--text-muted);">Avoid irrelevant or rarely needed information.</div></div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start; padding:10px; background:var(--bg); border-radius:var(--radius-sm); border:1px solid var(--border);">
+            <span class="badge badge-navy">H9</span>
+            <div><div style="font-weight:600; font-size:.85rem; color:var(--navy);">Help Users Recognize &amp; Recover</div><div style="font-size:.78rem; color:var(--text-muted);">Error messages should suggest a solution.</div></div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start; padding:10px; background:var(--bg); border-radius:var(--radius-sm); border:1px solid var(--border);">
+            <span class="badge badge-navy">H10</span>
+            <div><div style="font-weight:600; font-size:.85rem; color:var(--navy);">Help &amp; Documentation</div><div style="font-size:.78rem; color:var(--text-muted);">Provide easily searchable support resources.</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════ 4. RECOMMENDATIONS ══════════════════ -->
+  <section class="section" id="recommendations" style="background: var(--surface);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">04 — Recommendations</span>
+        <h2>Design Recommendations</h2>
+        <p>Proposed improvements to address the usability issues identified during evaluation.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- Priority Recommendations -->
+      <h3 style="margin-bottom:16px; font-size:1rem;">🔴 High Priority (Address Immediately)</h3>
+      <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+
+        <div class="card rec-card fade-up">
+          <div class="rec-icon">🗺️</div>
+          <div class="rec-content">
+            <h4>Fix Active Navigation Icon to Match Current Screen</h4>
+            <p>The bottom navigation bar currently highlights the "Search" icon as active even when the "Explore" dashboard is displayed. Update the navigation logic so the active icon always reflects the screen the user is currently viewing. <em>(H1 — Visibility of System Status)</em></p>
+          </div>
+        </div>
+
+        <div class="card rec-card fade-up">
+          <div class="rec-icon">✅</div>
+          <div class="rec-content">
+            <h4>Add Cancel Button and Reset Option in Schedule Screen</h4>
+            <p>Users currently have no way to exit or undo changes while creating or editing an itinerary in the My Schedule screen. Add a "Cancel" or "Close (X)" button to allow users to exit without saving, and include a "Reset Schedule" button to let them start over without deleting entries one by one. <em>(H3 — User Control and Freedom)</em></p>
+          </div>
+        </div>
+
+        <div class="card rec-card fade-up">
+          <div class="rec-icon">🔒</div>
+          <div class="rec-content">
+            <h4>Add Input Constraints to Sign Up Form</h4>
+            <p>The Sign Up form asks for "Birth Date" and "Phone Number" with no format guidance or input masks. Add input masks (e.g., mm/dd/yyyy for date, +63-XXX-XXXX for phone) and inline validation messages to prevent users from submitting incorrect data before clicking Register. <em>(H5 — Error Prevention)</em></p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Medium Priority -->
+      <h3 style="margin-bottom:16px; font-size:1rem;">🟡 Medium Priority</h3>
+      <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+
+        <div class="card rec-card fade-up">
+          <div class="rec-icon">📋</div>
+          <div class="rec-content">
+            <h4>Standardize Terminology Across All Screens</h4>
+            <p>The app inconsistently uses "Popular Places" on one screen and "Best Destination" on the home dashboard to refer to the same content. Choose one term and apply it consistently across all frames, buttons, and labels to avoid confusing users. <em>(H4 — Consistency and Standards)</em></p>
+          </div>
+        </div>
+
+        <div class="card rec-card fade-up">
+          <div class="rec-icon">💾</div>
+          <div class="rec-content">
+            <h4>Rename "Done" Button to "Save Changes" in Profile Screen</h4>
+            <p>The "Done" button on the Profile edit screen does not clearly communicate that it saves the user's changes. Rename it to "Save Changes" to make the action explicit, and clarify whether the "Back" arrow discards or keeps unsaved edits. <em>(H2 — Match Between System and the Real World)</em></p>
+          </div>
+        </div>
+
+        <div class="card rec-card fade-up">
+          <div class="rec-icon">🔍</div>
+          <div class="rec-content">
+            <h4>Persist Last Search Term in Map Search Bar</h4>
+            <p>When a user searches for an attraction and then navigates through the map layers, the search bar resets to empty. Keep the last searched term visible in the search bar, or add a "Recent Searches" dropdown so users do not need to re-enter their query after moving across map views. <em>(H6 — Recognition Rather Than Recall)</em></p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Low Priority -->
+      <h3 style="margin-bottom:16px; font-size:1rem;">🟢 Low Priority / Future Enhancements</h3>
+      <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:48px;">
+
+        <div class="card rec-card fade-up">
+          <div class="rec-icon">🏕️</div>
+          <div class="rec-content">
+            <h4>Add Quick Filter Chips on the Map for Tourist Needs</h4>
+            <p>The map currently only has zoom and re-center controls but no shortcut filters for common tourist needs. Add small filter chips or icons directly on the map interface for categories like Restrooms, Food, and Parking so users can quickly find what they need without leaving the map view. <em>(H7 — Flexibility and Efficiency of Use)</em></p>
+          </div>
+        </div>
+
+        <div class="card rec-card fade-up">
+          <div class="rec-icon">🧹</div>
+          <div class="rec-content">
+            <h4>Simplify Place Details Sheet and Clean Up Schedule Layout</h4>
+            <p>The "Luksohon Falls" detail sheet shows both a "Directions" and a "Start" button which serve the same purpose. Combine them into one primary action button. On the My Schedule screen, improve text hierarchy by balancing the size of dates and location addresses for a cleaner, more readable layout. <em>(H8 — Aesthetic and Minimalist Design)</em></p>
+          </div>
+        </div>
+
+        <div class="card rec-card fade-up">
+          <div class="rec-icon">💬</div>
+          <div class="rec-content">
+            <h4>Add Empty State Messages and Onboarding Tooltips</h4>
+            <p>When a user opens My Schedule with no trips, the screen looks broken rather than intentionally empty. Add a friendly empty state message like "No trips yet! Explore destinations to add them here." Also add a one-time onboarding tooltip on the Map screen to guide first-time users on how to use the interactive map and schedule sync. <em>(H9 &amp; H10 — Error Recovery and Help &amp; Documentation)</em></p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Suggested Design Improvements (Text-based) -->
+      <div class="section-header">
+        <h3 style="font-size:1.3rem;">Suggested Design Improvements</h3>
+        <p>Specific UI changes proposed for the next iteration of PartidoGO based on evaluation findings.</p>
+      </div>
+
+      <div class="table-wrap fade-up">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Screen</th>
+              <th>Current Problem</th>
+              <th>Proposed Change</th>
+              <th>Heuristic</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:700; color:var(--indigo-deep);">01</td>
+              <td><span class="resp-tag">Home Screen</span></td>
+              <td>The "Search" icon in the bottom nav is highlighted as active even though the Explore dashboard is showing.</td>
+              <td>Update the active nav state logic so the highlighted icon always matches the currently displayed screen content.</td>
+              <td><span class="badge badge-blue">H1 — Visibility</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:700; color:var(--indigo-deep);">02</td>
+              <td><span class="resp-tag">Profile</span></td>
+              <td>The "Done" button does not clearly indicate it saves changes; users may confuse it with the Back arrow.</td>
+              <td>Rename "Done" to "Save Changes" and add a tooltip or label clarifying that Back discards unsaved edits.</td>
+              <td><span class="badge badge-blue">H2 — Real World</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:700; color:var(--indigo-deep);">03</td>
+              <td><span class="resp-tag">My Schedule</span></td>
+              <td>No Cancel button or undo option exists when a user is creating or editing an itinerary.</td>
+              <td>Add a "Cancel (X)" button to exit without saving and a "Reset Schedule" button to clear and start over.</td>
+              <td><span class="badge badge-blue">H3 — User Control</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:700; color:var(--indigo-deep);">04</td>
+              <td><span class="resp-tag">Multiple Screens</span></td>
+              <td>The app uses "Popular Places" and "Best Destination" interchangeably for the same content.</td>
+              <td>Standardize to one term (e.g., "Top Destinations") and apply it consistently across all screens and labels.</td>
+              <td><span class="badge badge-blue">H4 — Consistency</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:700; color:var(--indigo-deep);">05</td>
+              <td><span class="resp-tag">Sign Up</span></td>
+              <td>Date and phone number fields have no format guidance, leading to invalid entries before submission.</td>
+              <td>Add input masks (mm/dd/yyyy and +63-XXX-XXXX) and real-time inline validation to prevent errors before submitting.</td>
+              <td><span class="badge badge-blue">H5 — Error Prevention</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:700; color:var(--indigo-deep);">06</td>
+              <td><span class="resp-tag">Map Search</span></td>
+              <td>The search bar resets to empty after the user navigates through different map layers, causing memory load.</td>
+              <td>Keep the last searched term visible in the search bar, or add a "Recent Searches" dropdown below the bar.</td>
+              <td><span class="badge badge-blue">H6 — Recognition</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:700; color:var(--indigo-deep);">07</td>
+              <td><span class="resp-tag">Map</span></td>
+              <td>The map only has zoom and re-center controls with no quick access to tourist category filters.</td>
+              <td>Add filter chips directly on the map for common tourist needs: Restrooms, Food, Parking, and Viewpoints.</td>
+              <td><span class="badge badge-blue">H7 — Flexibility</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:700; color:var(--indigo-deep);">08</td>
+              <td><span class="resp-tag">Place Details</span></td>
+              <td>"Directions" and "Start" buttons both appear on the Luksohon Falls detail sheet, cluttering the view.</td>
+              <td>Merge "Directions" and "Start" into a single "Get Directions" primary action button to reduce visual clutter.</td>
+              <td><span class="badge badge-blue">H8 — Minimalist Design</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:700; color:var(--indigo-deep);">09</td>
+              <td><span class="resp-tag">My Schedule</span></td>
+              <td>An empty schedule day shows a blank screen that appears broken rather than intentionally empty.</td>
+              <td>Display a friendly empty state: "No trips today! Explore destinations to add them to your schedule."</td>
+              <td><span class="badge badge-blue">H9 — Error Recovery</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:700; color:var(--indigo-deep);">10</td>
+              <td><span class="resp-tag">Map · Schedule</span></td>
+              <td>No tooltips or onboarding prompts exist to guide first-time users on how to use the map or sync schedules.</td>
+              <td>Add a one-time coach mark tooltip on the Map screen's "View Maps" button when the user opens it for the first time.</td>
+              <td><span class="badge badge-blue">H10 — Help & Docs</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════ CONCLUSION CTA ══════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div style="background: linear-gradient(135deg, var(--navy), #1D4ED8); border-radius: var(--radius-lg); padding: 48px 40px; text-align:center; position:relative; overflow:hidden;">
+        <div style="position:absolute; inset:0; background: radial-gradient(ellipse 50% 80% at 80% 50%, rgba(59,130,246,.3) 0%, transparent 60%);"></div>
+        <div style="position:relative; z-index:1;">
+          <h2 style="color:#000000; margin-bottom:12px;">Evaluation Complete</h2>
+          <p style="color:rgba(0, 0, 0, 0.75); max-width:520px; margin:0 auto 28px;">
+            This report documents a thorough usability evaluation of the [Prototype Name] mobile application,
+            using both expert and user-based methods.
+          </p>
+          <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+            <a href="data-gathering.html" style="padding:12px 28px; background:#0D034D; color:#fff; border:2px solid #0D034D; border-radius:var(--radius-sm); font-weight:600; font-size:.9rem; transition:var(--transition);" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">View Data Gathering</a>
+            <a href="https://www.figma.com/proto/3dF3nDTof9yaEpe4huM8Gk/PartidoGO?node-id=0-1&t=yHeFNrK7KGm0s4vV-1" target="_blank" rel="noopener" style="padding:12px 28px; background:#fff; color:#0D034D; border:2px solid #0D034D; border-radius:var(--radius-sm); font-weight:600; font-size:.9rem; transition:var(--transition);" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">View Prototype in Figma ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">UX Eval Report</div>
+          <div class="footer-sub">PartidoGO · HCI Final Project</div>
+        </div>
+        <nav class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="data-gathering.html">Data Gathering</a>
+          <a href="results.html">Results</a>
+          <a href="video-demo.html">Video Demo</a>
+          <a href="prototype-walkthrough.html">Walkthrough</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 Group 7 · Partido State University · BSIT - 3B</span>
+        <span class="footer-copy">HCI Final Project — Usability Evaluation</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

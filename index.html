@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home — Usability Evaluation Report</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ══════════════════ NAVBAR ══════════════════ -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <span class="brand-dot"></span>
+        PartidoGO
+      </a>
+      <div class="nav-links">
+        <a href="index.html"                 class="nav-link active">Home</a>
+        <a href="data-gathering.html"        class="nav-link">Data Gathering</a>
+        <a href="results.html"               class="nav-link">Results &amp; Recommendations</a>
+        <a href="video-demo.html"            class="nav-link">Video Demo</a>
+        <a href="prototype-walkthrough.html" class="nav-link">Prototype Walkthrough</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════ HERO ══════════════════ -->
+  <section class="page-hero">
+
+    <!-- Aurora glow -->
+    <div class="hero-aurora"></div>
+
+    <!-- Mountain wave layers (SVG) -->
+    <div class="hero-mountains">
+      <svg viewBox="0 0 1440 340" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="mtn-far-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2D1A7A" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#1A0A60" stop-opacity="0.8"/>
+          </linearGradient>
+          <linearGradient id="mtn-mid-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1E0D6A"/>
+            <stop offset="100%" stop-color="#120550"/>
+          </linearGradient>
+          <linearGradient id="mtn-near-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#130747"/>
+            <stop offset="100%" stop-color="#0D034D"/>
+          </linearGradient>
+          <linearGradient id="mtn-front-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0E0540"/>
+            <stop offset="100%" stop-color="#0D034D"/>
+          </linearGradient>
+          <!-- Snow-cap glow for peaks -->
+          <filter id="peak-glow">
+            <feGaussianBlur stdDeviation="2.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- ── LAYER 1: Farthest mountains (ghostly, high peaks) ── -->
+        <g class="mtn-layer-1">
+          <path d="
+            M-60,340 L-60,210
+            C20,195 60,150 120,120
+            C160,100 185,92 220,115
+            C260,140 290,165 340,145
+            C390,125 430,70  490,50
+            C540,32  570,28  610,55
+            C650,80  680,110 730,95
+            C780,78  820,40  880,20
+            C930,2   960,-5  1000,18
+            C1040,40 1080,75 1130,60
+            C1170,48 1200,30 1250,45
+            C1300,62 1340,90 1390,75
+            C1430,62 1460,50 1500,55
+            L1500,340 Z
+          " fill="url(#mtn-far-grad)"/>
+          <!-- Distant snow-peak highlights -->
+          <path d="M490,50 C510,35 530,25 550,15 C565,8 575,6 590,18 C605,30 595,42 610,55 C580,45 555,38 530,48 Z"
+                fill="rgba(210,200,255,0.18)" filter="url(#peak-glow)"/>
+          <path d="M880,20 C900,5 915,-3 935,-8 C950,-12 962,-10 975,0 C985,8 990,16 1000,18 C975,14 950,10 925,22 Z"
+                fill="rgba(210,200,255,0.14)" filter="url(#peak-glow)"/>
+        </g>
+
+        <!-- ── LAYER 2: Mid mountains ── -->
+        <g class="mtn-layer-2">
+          <path d="
+            M-80,340 L-80,240
+            C0,230  40,200  90,170
+            C130,148 160,135 200,155
+            C245,177 275,200 320,180
+            C370,158 405,110 460,90
+            C505,73  535,68  570,88
+            C608,110 640,148 690,132
+            C735,118 765,85  820,65
+            C870,47  900,40  940,60
+            C985,82  1015,118 1065,105
+            C1105,94 1135,72 1185,82
+            C1230,92 1265,120 1310,108
+            C1355,96 1385,78 1440,88
+            L1440,340 Z
+          " fill="url(#mtn-mid-grad)"/>
+          <!-- Mid snow caps -->
+          <path d="M460,90 C475,76 490,65 508,58 C520,52 530,50 542,58 C552,65 557,76 570,88 C548,80 522,74 498,84 Z"
+                fill="rgba(180,165,255,0.16)" filter="url(#peak-glow)"/>
+          <path d="M820,65 C836,50 850,40 868,33 C880,28 890,27 902,35 C912,42 918,52 940,60 C917,54 892,48 865,58 Z"
+                fill="rgba(180,165,255,0.13)" filter="url(#peak-glow)"/>
+        </g>
+
+        <!-- ── LAYER 3: Near mountains (darker, sharper) ── -->
+        <g class="mtn-layer-3">
+          <path d="
+            M-100,340 L-100,270
+            C-20,265 30,248 80,218
+            C115,196 140,180 180,198
+            C225,218 258,248 310,228
+            C358,210 392,168 445,148
+            C488,132 518,126 555,145
+            C595,166 628,205 680,190
+            C726,177 758,145 815,126
+            C862,110 892,102 935,122
+            C982,144 1018,182 1072,168
+            C1112,157 1145,130 1198,140
+            C1248,150 1280,178 1340,162
+            C1390,148 1420,132 1500,140
+            L1500,340 Z
+          " fill="url(#mtn-near-grad)"/>
+          <!-- Snow caps -->
+          <path d="M445,148 C460,132 474,120 490,113 C503,108 514,107 526,116 C537,124 542,136 555,145 C534,137 510,131 485,142 Z"
+                fill="rgba(220,210,255,0.12)" filter="url(#peak-glow)"/>
+          <path d="M815,126 C830,110 845,98 862,91 C874,86 885,85 897,94 C907,102 912,114 935,122 C911,116 885,110 858,121 Z"
+                fill="rgba(220,210,255,0.1)" filter="url(#peak-glow)"/>
+        </g>
+
+        <!-- ── LAYER 4: Foreground silhouette ridge ── -->
+        <path d="
+          M-40,340 L-40,305
+          C40,298  80,285 130,268
+          C168,254 195,240 240,256
+          C288,274 322,305 378,290
+          C425,277 458,250 515,235
+          C560,223 590,218 628,234
+          C668,252 700,288 754,275
+          C800,264 832,240 890,228
+          C938,218 968,214 1010,230
+          C1056,248 1090,282 1148,268
+          C1190,257 1222,235 1278,242
+          C1330,250 1365,274 1430,258
+          L1500,245 L1500,340 Z
+        " fill="url(#mtn-front-grad)"/>
+
+        <!-- Thin misty fog band at ridge line -->
+        <path d="
+          M-40,305 C40,298 80,285 130,268 C168,254 195,240 240,256 C288,274 322,305 378,290
+          C425,277 458,250 515,235 C560,223 590,218 628,234 C668,252 700,288 754,275
+          C800,264 832,240 890,228 C938,218 968,214 1010,230 C1056,248 1090,282 1148,268
+          C1190,257 1222,235 1278,242 C1330,250 1365,274 1430,258 L1500,245
+          L1500,260 C1430,273 1330,268 1278,258 C1222,250 1190,272 1148,284
+          C1090,298 1056,264 1010,246 C968,230 938,234 890,244
+          C832,256 800,280 754,291 C700,304 668,268 628,250
+          C590,234 560,239 515,251 C458,266 425,293 378,306
+          C322,321 288,290 240,272 C195,256 168,270 130,284
+          C80,301 40,314 -40,321 Z
+        " fill="rgba(167,139,250,0.07)"/>
+
+      </svg>
+    </div>
+
+    <div class="container">
+      <div class="hero-content hero-centered">
+        
+
+        <!-- ✏️ EDIT: Change the title to your actual prototype name -->
+        <h1>PartidoGO</h1>
+
+        <!-- ✏️ EDIT: Short description of what your app does -->
+        <p>
+          <!-- [Short description of what your app does] -->
+        </p>
+
+        <div class="hero-meta hero-meta-centered">
+          <!-- ✏️ EDIT: Your course/subject -->
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Course</span>
+            <span class="hero-meta-value">Human-Computer Interaction</span>
+          </div>
+          <div class="hero-divider"></div>
+          <!-- ✏️ EDIT: Your section -->
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Section</span>
+            <span class="hero-meta-value">BSIT 3B</span>
+          </div>
+          <div class="hero-divider"></div>
+          <!-- ✏️ EDIT: Submission date -->
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Date Submitted</span>
+            <span class="hero-meta-value">April 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ PROTOTYPE OVERVIEW ══════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">The Prototype</span>
+        <h2>PartidoGo</h2>
+        <p>It is a tourism application
+designed to help users find and explore different tourist destinations in the Partido area, such as
+beaches, resorts, and other local attractions.
+ The system also allows users to view locations through a map and access important information about each destination.
+ </p>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- ✏️ EDIT: Fill in your prototype details -->
+      <div class="prototype-showcase fade-up">
+        <div class="prototype-img">
+          <!-- OPTION A: Replace this with an <img> tag pointing to your screenshot -->
+          <!-- <img src="assets/images/prototype-screenshot.png" alt="App Screenshot"> -->
+          <!-- OPTION B: Keep this placeholder text until you have the image -->
+          <div style="text-align:center; padding:16px;">
+            
+            <img src="assets/images/PartidoGOLogo.png" alt="App Screenshot">
+          </div>
+        </div>
+
+        <div class="prototype-info">
+          <!-- ✏️ EDIT -->
+          <h3>PartidoGO</h3>
+          <p>
+            <!-- ✏️ EDIT: Describe your app here (2–4 sentences) -->
+            PartidoGo is a mobile application designed to streamline tourism in the Partido area of Bicol by allowing users to 
+            easily locate and book local resorts and tourist spots. It solves the difficulty of finding reliable travel 
+            information in the region, specifically targeting local travelers and tourists looking for a seamless exploration 
+            experience. Core features include an interactive map, 
+            verified accommodation listings, and a simplified booking system.
+          </p>
+          <div class="prototype-tags">
+            <!-- ✏️ EDIT: Add relevant tags for your app -->
+            <span class="tag"> Mobile App</span>
+            <span class="tag"> UI Prototype</span>
+            <span class="tag"> Tourist App</span>
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════ GROUP MEMBERS ══════════════════ -->
+  <section class="section" style="background: var(--surface);">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">The Team</span>
+        <h2>Group Members</h2>
+        <p>Meet the members responsible for the prototype development and usability evaluation.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- ✏️ EDIT: Add or remove member cards. Duplicate the card block for more members. -->
+      <div class="grid-4" style="gap:20px;">
+
+        <!-- MEMBER 1 -->
+        <div class="card member-card fade-up">
+          <div class="member-avatar">
+            <!-- OPTION A: Replace with your actual photo -->
+             <img src="assets/images/LON.jpg" alt="Member 1">
+            <!-- OPTION B: Initials placeholder (change "AB" to first & last initial) -->
+            
+          </div>
+          <div class="member-name">Lon Adlehcir Monserate</div>
+          <div class="member-role">Project Lead / Evaluator]</div>
+          <div class="member-id">202311703</div>
+        </div>
+
+        <!-- MEMBER 2 -->
+        <div class="card member-card fade-up">
+          <div class="member-avatar">
+            <img src="assets/images/DEXTER.png" alt="Member 2">
+            </div>
+          <div class="member-name">Dexter P. Ricarte</div>
+          <div class="member-role">Data Analyst / Evaluator</div>
+          <div class="member-id">202310933</div>
+        </div>
+
+        <!-- MEMBER 3 -->
+        <div class="card member-card fade-up">
+          <div class="member-avatar">
+            <img src="assets/images/SHELEECATES.jpg" alt="Member 3">
+          </div>
+          <div class="member-name">Sheercates Bruzo</div>
+          <div class="member-role">Documentation Lead / Evaluator</div>
+          <div class="member-id">202220001</div>
+        </div>
+
+        <!-- MEMBER 4 -->
+        <div class="card member-card fade-up">
+          <div class="member-avatar">
+            <img src="assets/images/CYNTHIA.jpg" alt="Member 4">
+          </div>
+          <div class="member-name">Cynthia Sales</div>
+          <div class="member-role">Research / Analyst</div>
+          <div class="member-id">202310940</div>
+        </div>
+
+        <!-- MEMBER 5 (if needed) -->
+        <!-- Copy and paste this block to add more members -->
+        <!--
+        <div class="card member-card fade-up">
+          <div class="member-avatar">IJ</div>
+          <div class="member-name">[Full Name 5]</div>
+          <div class="member-role">[Role / Position]</div>
+          <div class="member-id">[Student ID]</div>
+        </div>
+        -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ EVALUATION OVERVIEW ══════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">Methodology</span>
+        <h2>Evaluation Methods Used</h2>
+        <p>This project employed two complementary usability evaluation methods.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="grid-2 fade-up">
+        <!-- Method 1 -->
+        <div class="card" style="padding: 36px;">
+          <div style="font-size: 2.2rem; margin-bottom: 16px;">🔍</div>
+          <h3 style="margin-bottom: 10px;">Heuristic Evaluation</h3>
+          <p style="margin-bottom: 16px;">
+            Each group member independently evaluated the prototype using
+            <strong style="color: var(--navy);">Jakob Nielsen's 10 Usability Heuristics</strong>.
+            Issues were rated by severity on a scale of 0–4.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;">
+            <span class="badge badge-blue">Visibility of Status</span>
+            <span class="badge badge-blue">User Control</span>
+            <span class="badge badge-blue">Consistency</span>
+            <span class="badge badge-blue">Error Prevention</span>
+            <span class="badge badge-blue">+ 6 more</span>
+          </div>
+        </div>
+
+        <!-- Method 2 -->
+        <div class="card" style="padding: 36px;">
+          <div style="font-size: 2.2rem; margin-bottom: 16px;">👥</div>
+          <h3 style="margin-bottom: 10px;">Usability Testing</h3>
+          <p style="margin-bottom: 16px;">
+            Real users were recruited to perform tasks using the prototype while
+            their interactions, feedback, and satisfaction scores were recorded.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;">
+            <!-- ✏️ EDIT: Update the number of respondents -->
+            <span class="badge badge-navy">[#] Respondents</span>
+            <span class="badge badge-blue">Task-Based Testing</span>
+            <span class="badge badge-blue">SUS / Likert Survey</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Nav Tiles -->
+      <div class="grid-3 mt-4">
+        <a href="data-gathering.html" class="card fade-up" style="padding: 24px; display:flex; align-items:center; gap:16px; text-decoration:none; cursor:pointer;">
+          <div style="font-size:1.8rem;"></div>
+          <div>
+            <div class="fw-700 font-sora text-navy" style="font-size:.95rem;">Data Gathering</div>
+            <div class="text-muted" style="font-size:.82rem;">Consent, surveys &amp; documentation</div>
+          </div>
+          <span style="margin-left:auto; color:var(--blue); font-size:1.1rem;">→</span>
+        </a>
+        <a href="results.html" class="card fade-up" style="padding: 24px; display:flex; align-items:center; gap:16px; text-decoration:none; cursor:pointer;">
+          <div style="font-size:1.8rem;"></div>
+          <div>
+            <div class="fw-700 font-sora text-navy" style="font-size:.95rem;">Results &amp; Discussion</div>
+            <div class="text-muted" style="font-size:.82rem;">Findings, issues &amp; analysis</div>
+          </div>
+          <span style="margin-left:auto; color:var(--blue); font-size:1.1rem;">→</span>
+        </a>
+        <a href="results.html#recommendations" class="card fade-up" style="padding: 24px; display:flex; align-items:center; gap:16px; text-decoration:none; cursor:pointer;">
+          <div style="font-size:1.8rem;"></div>
+          <div>
+            <div class="fw-700 font-sora text-navy" style="font-size:.95rem;">Recommendations</div>
+            <div class="text-muted" style="font-size:.82rem;">Design improvements suggested</div>
+          </div>
+          <span style="margin-left:auto; color:var(--blue); font-size:1.1rem;">→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">UX Eval Report</div>
+          <div class="footer-sub">PartidoGO · HCI Final Project</div>
+        </div>
+        <nav class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="data-gathering.html">Data Gathering</a>
+          <a href="results.html">Results</a>
+          <a href="video-demo.html">Video Demo</a>
+          <a href="prototype-walkthrough.html">Walkthrough</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 Group 7 · Partido State University · BSIT - 3B</span>
+        <span class="footer-copy">HCI Final Project — Usability Evaluation</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
